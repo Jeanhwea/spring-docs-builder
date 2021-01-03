@@ -14,8 +14,8 @@ cd /assets/source && chmod +x /assets/entrypoint.sh && \
   ./gradlew build asciidoctor >/assets/gradle.log 2>&1
 
 log "Archiving build docs"
-FILETAG=$(TZ='Asia/Shanghai' date +'%Y%m%d%H%M%S')
-ARCFILE=/assets/${FILETAG}.tar.gz
+ARCNAME=$(TZ='Asia/Shanghai' date +'%Y%m%d_%H%M%S_docs')
+ARCFILE=/assets/${ARCNAME}.tar.gz
 tar czvf $ARCFILE -C /assets/source/build docs
 
 log "Cleanuping build results"
