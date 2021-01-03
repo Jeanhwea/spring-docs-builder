@@ -9,7 +9,11 @@ echo "Building source code"
 cd /assets/source && chmod +x /assets/entrypoint.sh && \
   ./gradlew build asciidoctor
 
+echo "Archiving build docs"
+FILETAG=$(TZ='Asia/Shanghai' date +'%Y%m%d%H%M%S')
+ARCFILE=/assets/${FILETAG}.tar.gz
+tar czvf $ARCFILE -C /assets/source/build docs
+
 echo "Cleanuping build results"
 rm -rf ~root/.gradle && \
-  mv /assets/source/build /assets/build && \
   rm -rf /assets/source
