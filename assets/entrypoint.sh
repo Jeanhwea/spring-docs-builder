@@ -5,4 +5,4 @@ FILETAG=$(TZ='Asia/Shanghai' date +'%Y%m%d_%H%M%S')
 ARCFILE=/assets/shares/${FILETAG}_build.tar.gz
 
 tar czvf $ARCFILE -C /assets/build .
-mv $ARCFILE /assets/shares
+echo "Done archiving to $ARCFILE"
