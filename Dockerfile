@@ -1,9 +1,9 @@
 FROM openjdk:8
-LABEL appname="spring-docs-builder" author="Jinghui Hu"
+LABEL author="Jinghui Hu"
 
-COPY assets /app
-RUN chmod +x /app/build.sh && /app/build.sh
+COPY assets /assets
+RUN chmod +x /assets/setup.sh && /assets/setup.sh
 
-VOLUME /app/spring
+VOLUME /assets/spring
 
-ENTRYPOINT "/usr/sbin/entry.sh"
+ENTRYPOINT "/assets/entrypoint.sh"
