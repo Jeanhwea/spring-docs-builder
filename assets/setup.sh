@@ -2,7 +2,7 @@ SPRING_GIT_REPO=${SPRING_GIT_REPO:="https://github.com/spring-projects/spring-fr
 
 set -e
 
-git clone $SPRING_GIT_REPO /assets/source
+git clone -q $SPRING_GIT_REPO /assets/source
 echo "Successful clone source code"
 
 cd /assets/source && chmod +x /assets/entrypoint.sh && \
