@@ -2,18 +2,22 @@ SPRING_GIT_REPO=${SPRING_GIT_REPO:="https://github.com/spring-projects/spring-fr
 
 set -e
 
-echo "Cloning source code"
+log() {
+  echo "$(TZ='Asia/Shanghai' date +'%F %T'): $*"
+}
+
+log "Cloning source code"
 git clone -q $SPRING_GIT_REPO /assets/source
 
-echo "Building source code"
+log "Building source code"
 cd /assets/source && chmod +x /assets/entrypoint.sh && \
   ./gradlew build asciidoctor
 
-echo "Archiving build docs"
+log "Archiving build docs"
 FILETAG=$(TZ='Asia/Shanghai' date +'%Y%m%d%H%M%S')
 ARCFILE=/assets/${FILETAG}.tar.gz
 tar czvf $ARCFILE -C /assets/source/build docs
 
-echo "Cleanuping build results"
+log "Cleanuping build results"
 rm -rf ~root/.gradle && \
   rm -rf /assets/source
