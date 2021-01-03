@@ -20,3 +20,5 @@ tar czvf $ARCFILE -C /assets/source/build docs
 
 log "Cleanuping build results"
 rm -rf ~root/.gradle && rm -rf /assets/source
+
+log "Done!"
