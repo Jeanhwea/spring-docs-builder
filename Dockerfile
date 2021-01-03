@@ -4,6 +4,6 @@ LABEL author="Jinghui Hu"
 COPY assets /assets
 RUN chmod +x /assets/setup.sh && /assets/setup.sh
 
-VOLUME /assets/spring
+VOLUME /assets/shares
 
 ENTRYPOINT "/assets/entrypoint.sh"

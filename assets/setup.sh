@@ -2,9 +2,14 @@ SPRING_GIT_REPO=${SPRING_GIT_REPO:="https://github.com/spring-projects/spring-fr
 
 set -e
 
+echo "Cloning source code"
 git clone -q $SPRING_GIT_REPO /assets/source
-echo "Successful clone source code"
 
+echo "Building source code"
 cd /assets/source && chmod +x /assets/entrypoint.sh && \
   ./gradlew build asciidoctor
-echo "Successful build source code"
+
+echo "Cleanuping build results"
+rm -rf ~root/.gradle && \
+  mv /assets/source/build /assets/build && \
+  rm -rf /assets/source
