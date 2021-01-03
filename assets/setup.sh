@@ -6,19 +6,19 @@ log() {
   echo "$(TZ='Asia/Shanghai' date +'%F %T'): $*"
 }
 
-log "Cloning source code"
+log "Cloning source code ..."
 git clone -q $SPRING_GIT_REPO /assets/source
 
-log "Building source code"
+log "Building source code ..."
 cd /assets/source && chmod +x /assets/entrypoint.sh && \
   ./gradlew build asciidoctor >/assets/gradle.log 2>&1
 
-log "Archiving build docs"
+log "Archiving build docs ..."
 ARCNAME=$(TZ='Asia/Shanghai' date +'%Y%m%d_%H%M%S_docs')
 ARCFILE=/assets/${ARCNAME}.tar.gz
 tar czvf $ARCFILE -C /assets/source/build docs
 
-log "Cleanuping build results"
+log "Cleanup caches ..."
 rm -rf ~root/.gradle && rm -rf /assets/source
 
 log "Done!"
