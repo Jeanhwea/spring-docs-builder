@@ -14,3 +14,9 @@ docker run --name builder \
        -v /srv/builder/shares:/assets/shares \
        jeanhwea/spring-docs-builder
 ```
+
+## BUILD
+
+| Date       | Version |
+|------------|---------|
+| 2021-01-24 | v1.0.4  |
