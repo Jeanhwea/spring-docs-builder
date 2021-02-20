@@ -10,11 +10,12 @@ chmod +x /assets/entrypoint.sh
 
 log "Cloning source code ..."
 git clone -q $SPRING_GIT_REPO /assets/source
-cd /assets/source && git reset --hard v5.2.5.RELEASE
+cd /assets/source && \
+  git reset --hard v5.2.5.RELEASE
 
 log "Building source code ..."
 cd /assets/source && \
-  ./gradlew build asciidoctor > /assets/gradle.log 2>&1
+  ./gradlew build asciidoctor #> /assets/gradle.log 2>&1
 
 log "Archiving build docs ..."
 ARCNAME=$(TZ='Asia/Shanghai' date +'%Y%m%d_%H%M%S_docs')
