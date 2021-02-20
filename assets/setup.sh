@@ -10,6 +10,7 @@ chmod +x /assets/entrypoint.sh
 
 log "Cloning source code ..."
 git clone -q $SPRING_GIT_REPO /assets/source
+cd /assets/source && git reset --hard 5.2.5.RELEASE
 
 log "Building source code ..."
 cd /assets/source && \
